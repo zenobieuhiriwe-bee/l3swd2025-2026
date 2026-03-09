@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Card Container */
+        .card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top: 10px solid #f59e0b; /* Orange top border */
+            overflow: hidden;
+            padding: 50px;
+        }
+
+        /* Header */
+        .header {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 35px;
+        }
+        .text-blue { color: #1e3a8a; }
+        .text-orange { color: #f59e0b; }
+
+        /* Tab Navigation Bar */
+        .tab-bar {
+            background-color: #f0f7ff;
+            display: inline-flex;
+            padding: 8px;
+            border-radius: 20px;
+            gap: 10px;
+            margin-bottom: 40px;
+            border: 1px solid #e0e7ff;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            background: transparent;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Content Area (Dashed Box) */
+        .content-box {
+            border: 2px dashed #e5e7eb;
+            border-radius: 30px;
+            padding: 40px;
+        }
+
+        .section-title {
+            color: #1e3a8a;
+            font-size: 26px;
+            font-weight: 700;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: inline-block;
+            min-width: 300px;
+        }
+
+        .description {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* Vision & Values Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            padding: 30px;
+            border-radius: 30px;
+        }
+
+        .vision-bg { 
+            background-color: #f8fbff; 
+            border: 1px solid #dbeafe;
+        }
+
+        .values-bg { 
+            background-color: #f0fdf4; 
+            border: 1px solid #dcfce7;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .vision-title { color: #1e3a8a; }
+        .values-title { color: #166534; }
+        .icon { color: #f59e0b; font-size: 24px; }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #2563eb;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .header { font-size: 32px; }
+        }
+        a{
+            text-decoration: none;
+        }
+        
+        b :hover{
+           padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            
+           
+            font-size: 16px;  
+
+         background-color: #82a0f1;
+            color: #eef2f6;
+            }   
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <span class="text-blue">About</span> 
+            <span class="text-orange">Mutovu TSS</span>
+        </div>
+
+        <div class="tab-bar">
+            <a href="about.html"><button class="tab-btn active">Overview</button></a></b>
+           <b> <a href="history.html"><button class="tab-btn">History</button></a></b>
+            <b><a href="mission &v.html"><button class="tab-btn">Mission & Vision</button></a></b>
+        </div>
+
+        <div class="content-box">
+            <h2 class="section-title">School Overview</h2>
+            
+            <p class="description">
+                Mutovu Technical Secondary School is a premier institution in Nyaruguru District dedicated to providing quality technical 
+                education to Rwandan youth. Established to bridge the skills gap in technical fields, we offer hands-on training combined 
+                with academic excellence.
+            </p>
+            
+            <p class="description">
+                Our school is committed to producing graduates who are not only technically competent but also ethically grounded and 
+                ready to contribute to Rwanda's development goals.
+            </p>
+
+            <div class="grid">
+                <div class="info-card vision-bg">
+                    <div class="card-header vision-title">
+                        <span class="icon">↗</span> Our Vision
+                    </div>
+                    <p class="description" style="font-style: italic; font-size: 16px;">
+                        To be a center of excellence in technical education, producing skilled professionals who drive innovation...
+                    </p>
+                </div>
+
+                <div class="info-card values-bg">
+                    <div class="card-header values-title">
+                        <span class="icon">✓</span> Our Values
+                    </div>
+                    <div class="list-item"><div class="dot"></div> Excellence in Education</div>
+                    <div class="list-item"><div class="dot"></div> Innovation & Creativity</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
