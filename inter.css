@@ -14,6 +14,7 @@ background:#f2f2f2;
 .topbar{
     text-align: right;
 align-items:center;
+    width:1500px;
 padding:15px 20px;
 background:linear-gradient(90deg,#2e3192,#662d91,#008037);
 color:white;
@@ -202,5 +203,6 @@ color:blue;
     border-color: white;
     border-width: 1px;
 }
+
 
 
