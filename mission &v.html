@@ -3,19 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mission & Vision</title>
+    <title>About | Mutovu TSS</title>
     <style>
-        /* Base Page Setup */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+        /* 1. Global Reset & Layout */
+        * {
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 2. Topbar */
+        .topbar {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, #2e3192, #662d91, #008037);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 20px;
+            color: #ffd700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* 3. Main Container Wrapper */
+        .wrapper {
+            display: flex;
+            flex: 1;
+            margin-top: 60px;
+        }
+
+        /* 4. Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #016432;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        .user {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .user img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid #f59e0b;
+        }
+
+        .sidebar h2 {
+            font-size: 14px;
+            color: #f59e0b;
+            margin: 20px 0 10px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul { list-style: none; }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .sidebar ul li a:hover {
+            background: #014630;
+            padding-left: 20px;
+            border-bottom: 4px solid #f59e0b;
+        }
+
+        #lo {
+            background-color: #ef4444;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            font-size: 15px;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        #lo:hover { background: #be123c; }
+
+        /* 5. Main Content Area */
+        .main-content {
+            margin-left: 260px;
+            padding: 40px;
+            flex: 1;
             display: flex;
             justify-content: center;
         }
 
-        /* Main Container */
         .main-card {
             background: white;
             width: 100%;
@@ -23,35 +137,69 @@
             border-radius: 30px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            align-self: flex-start;
         }
 
-        /* Yellow Accent Bar */
         .top-accent {
             height: 12px;
             background-color: #eab308;
         }
 
-        .content-padding {
-            padding: 40px 50px;
+        .content-padding { padding: 40px 50px; }
+
+        .header-title {
+            font-size: 48px;
+            font-weight: 850;
+            margin-bottom: 30px;
         }
 
-        /* Header Title */
-        .header-title {
-            font-size: 55px;
-            font-weight: 850;
-            margin: 0 0 30px 0;
-        }
         .text-blue { color: #21356f; }
         .text-yellow { color: #eab308; }
 
-        /* Dashed Content Container */
+        /* Tab Bar Styling */
+        .tab-bar {
+            background-color: #f0f7ff;
+            display: inline-flex;
+            padding: 8px;
+            border-radius: 50px;
+            gap: 10px;
+            margin-bottom: 40px;
+            border: 1px solid #e0e7ff;
+        }
+
+        .tab {
+            padding: 10px 25px;
+            border-radius: 25px;
+            color: #475569;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        /* Hover and Visited Logic */
+        .tab:hover {
+            background-color: #82a0f1;
+            color: #eef2f6;
+        }
+
+        .tab:visited {
+            color: #6366f1; /* Subtly different color for visited */
+        }
+
+        .tab.active {
+            background-color: #2563eb;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Content Sections */
         .dashed-box {
             border: 2px dashed #e2e8f0;
             border-radius: 25px;
             padding: 35px;
         }
 
-        /* Mission & Vision Styling */
         .section-header {
             color: #1e293b;
             font-size: 28px;
@@ -63,10 +211,8 @@
             color: #64748b;
             line-height: 1.6;
             margin-bottom: 40px;
-            max-width: 850px;
         }
 
-        /* Grid for Mission and Vision side-by-side */
         .mission-vision-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -81,13 +227,8 @@
             margin-bottom: 10px;
         }
 
-        .eye-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-            display: block;
-        }
+        .value-text { color: #64748b; line-height: 1.5; }
 
-        /* Core Values Styling */
         .core-values-section {
             background-color: #f8fafc;
             border-radius: 20px;
@@ -96,140 +237,140 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
         .value-card {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             border: 1px solid #edf2f7;
         }
 
         .value-icon { font-size: 28px; margin-bottom: 10px; display: block; }
         .value-name { font-weight: 700; color: #1e293b; margin-bottom: 5px; display: block; }
-        .value-text { font-size: 14px; color: #64748b; line-height: 1.4; }
- .tab-bar {
-            background-color: #f0f7ff;
-            display: inline-flex;
-            padding: 8px;
-            border-radius: 20px;
-            gap: 10px;
-            margin-bottom: 40px;
-            border: 1px solid #e0e7ff;
-        }
-         .tab {
-            padding: 10px 25px;
-            border-radius: 25px;
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-        }
-         b :hover{
-           padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            
-           
-            font-size: 16px;  
 
-         background-color: #82a0f1;
-            color: #eef2f6;
-            }   
-        
-     
-        #tab{
-           background-color: #1e3a8a;
-            color: #eef2f6;  
+        footer {
+            margin-left: 260px;
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            font-size: 13px;
+            color: #64748b;
         }
-        a{
-            text-decoration: none;
-        }
-         /* Active Tab (Blue) */
-        .tab.active {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content, footer { margin-left: 0; }
+            .mission-vision-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-           
-<div class="main-card">
-    
-    <div class="top-accent"></div>
-    <div class="content-padding">
-        
-        <h1 class="header-title">
-            <span class="text-blue">About</a></span> 
-            <span class="text-yellow">Mutovu TSS</span>
-        </h1>
- <div class="tab-bar">
-                <a href="overview.html"><b><div class="tab">Overview</div></b></a>
-                <a href="history.html"><b><div class="tab ">History</div></b></a>
-                <a href="mission &v.html"><div class="tab active">Mission & Vision</div></a>
-            </div>
-        <div class="dashed-box">
-            <div class="section-header">Mission & Vision</div>
-            <p class="main-description">
-                Our mission and vision guide everything we do at Mutovu TSS, from curriculum development to student support services.
-            </p>
-            
-            <div class="mission-vision-grid">
-                <div>
-                    <div class="sub-title">Our Mission</div>
-                    <p class="value-text" style="font-size: 16px;">
-                        To provide quality technical education that equips students with practical skills, theoretical knowledge, and ethical values necessary for personal growth and contribution to Rwanda's socio-economic development.
-                    </p>
-                </div>
-                <div>
-                    <span class="eye-icon">👁️</span>
-                    <div class="sub-title">Our Vision</div>
-                    <p class="value-text" style="font-size: 16px;">
-                        To be a leading center of excellence in technical education in Rwanda, producing skilled professionals who drive innovation and industrial growth.
-                    </p>
-                </div>
+    <header class="topbar">
+        <div class="title">Welcome To Mutovu Technical Secondary School</div>
+    </header>
+
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="user">
+                <img src="koi.png" alt="Profile">
+                <h3>Student User</h3>
+                <p style="font-size: 12px; opacity: 0.8;">Student</p>
             </div>
 
-            <div class="core-values-section">
-                <div class="section-header" style="font-size: 22px;">Core Values</div>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <span class="value-icon">💡</span>
-                        <span class="value-name">Innovation</span>
-                        <span class="value-text">Embracing new technologies and teaching methods</span>
+            <h2>MAIN MENU</h2>
+            <ul>
+                <li><a href="index.html">🏠 HOME</a></li>
+                <li><a href="about.html" style="background: #014630; border-bottom: 4px solid #f59e0b;">ℹ️ ABOUT</a></li>
+                <li><a href="#">📞 CONTACT</a></li>
+                <li><a href="#">📝 REGISTRATION</a></li>
+                <li><a href="#">📚 COURSES</a></li>
+                <li><a href="#">📜 SCHEDULE</a></li>
+                <li><a href="#">🎥 VIDEO</a></li>
+                <li><a href="#">📓 CLASS NOTE</a></li>
+            </ul>
+
+            <button id="lo">↤ Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <div class="main-card">
+                <div class="top-accent"></div>
+                <div class="content-padding">
+                    
+                    <h1 class="header-title">
+                        <span class="text-blue">About</span> 
+                        <span class="text-yellow">Mutovu TSS</span>
+                    </h1>
+
+                    <div class="tab-bar">
+                        <a href="overview.html" class="tab">Overview</a>
+                        <a href="history.html" class="tab">History</a>
+                        <a href="mission-vision.html" class="tab active">Mission & Vision</a>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">🎯</span>
-                        <span class="value-name">Excellence</span>
-                        <span class="value-text">Striving for the highest standards in education</span>
-                    </div>
-                    <div class="value-card">
-                        <span class="value-icon">🤝</span>
-                        <span class="value-name">Integrity</span>
-                        <span class="value-text">Maintaining honesty and ethical standards</span>
-                    </div>
-                    <div class="value-card">
-                        <span class="value-icon">🌍</span>
-                        <span class="value-name">Community</span>
-                        <span class="value-text">Serving and contributing to society</span>
+
+                    <div class="dashed-box">
+                        <div class="section-header">Mission & Vision</div>
+                        <p class="main-description">
+                            Our mission and vision guide everything we do at Mutovu TSS, from curriculum development to student support services.
+                        </p>
+                        
+                        <div class="mission-vision-grid">
+                            <div>
+                                <div class="sub-title">Our Mission</div>
+                                <p class="value-text" style="font-size: 16px;">
+                                    To provide quality technical education that equips students with practical skills, theoretical knowledge, and ethical values necessary for personal growth and contribution to Rwanda's socio-economic development.
+                                </p>
+                            </div>
+                            <div>
+                                <span class="eye-icon">👁️</span>
+                                <div class="sub-title">Our Vision</div>
+                                <p class="value-text" style="font-size: 16px;">
+                                    To be a leading center of excellence in technical education in Rwanda, producing skilled professionals who drive innovation and industrial growth.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="core-values-section">
+                            <div class="section-header" style="font-size: 22px;">Core Values</div>
+                            <div class="values-grid">
+                                <div class="value-card">
+                                    <span class="value-icon">💡</span>
+                                    <span class="value-name">Innovation</span>
+                                    <span class="value-text">Embracing new technologies</span>
+                                </div>
+                                <div class="value-card">
+                                    <span class="value-icon">🎯</span>
+                                    <span class="value-name">Excellence</span>
+                                    <span class="value-text">Striving for highest standards</span>
+                                </div>
+                                <div class="value-card">
+                                    <span class="value-icon">🤝</span>
+                                    <span class="value-name">Integrity</span>
+                                    <span class="value-text">Maintaining ethical standards</span>
+                                </div>
+                                <div class="value-card">
+                                    <span class="value-icon">🌍</span>
+                                    <span class="value-name">Community</span>
+                                    <span class="value-text">Contributing to society</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-</div>
+
+    <footer>
+        &copy; Copyright | <b>Mutovu TSS 2026</b> | All Rights Reserved
+    </footer>
 
 </body>
 </html>
