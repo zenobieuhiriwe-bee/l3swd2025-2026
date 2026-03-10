@@ -3,44 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> History</title>
+    <title>History | Mutovu TSS</title>
     <style>
-        /* Basic Page Reset */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+        /* 1. Global Reset */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 2. Topbar - Fixed Header */
+        .topbar {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, #2e3192, #662d91, #008037);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .top-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #ffd700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* 3. Layout Wrapper */
+        .wrapper {
+            display: flex;
+            flex: 1;
+            margin-top: 60px; /* Space for topbar */
+        }
+
+        /* 4. Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #016432;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        .user {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .user img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid #f59e0b;
+        }
+
+        .sidebar h2 {
+            font-size: 14px;
+            color: #f59e0b;
+            margin: 20px 0 10px;
+            text-transform: uppercase;
+        }
+
+        .sidebar ul { list-style: none; }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #014630;
+            border-bottom: 4px solid #f59e0b;
+        }
+
+        #lo {
+            background-color: red;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 130px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: white;
+    border-color: white;
+    border-width: 1px;
+        }
+
+        /* 5. Main Content Container (Right Side) */
+        .main-content {
+            margin-left: 260px; /* Aligns content next to sidebar */
             padding: 40px;
+            width: 100%;
             display: flex;
             justify-content: center;
         }
 
-        /* Main White Container */
         .container {
             background-color: white;
             width: 100%;
-            max-width: 1000px;
+            max-width: 950px;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 10px solid #f59e0b;
         }
 
-        /* Top Yellow Bar */
-        .top-bar {
-            height: 15px;
-            background-color: #f59e0b;
-        }
+        .content-padding { padding: 40px; }
 
-        .content-padding {
-            padding: 50px;
-        }
-
-        /* Header Text */
-        .title {
-            font-size: 55px;
+        .page-title {
+            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .blue-text { color: #1e3a8a; }
         .yellow-text { color: #f59e0b; }
@@ -49,135 +149,134 @@
         .tab-bar {
             background-color: #f8fafc;
             border: 1px solid #eef2f6;
-            padding: 15px;
+            padding: 10px;
             border-radius: 20px;
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
         .tab {
-            padding: 10px 25px;
+            padding: 10px 20px;
             border-radius: 25px;
-            border: 1px solid #e2e8f0;
             background: white;
             color: #475569;
             font-weight: 600;
-            cursor: pointer;
             text-decoration: none;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
         }
 
-        /* Active Tab (Blue) */
+        .tab:hover {
+            background-color: #82a0f1;
+            color: white;
+        }
+
         .tab.active {
             background-color: #2563eb;
             color: white;
             border: none;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
-        /* Dashed Content Area */
+        /* History Content Box */
         .history-box {
             border: 2px dashed #e2e8f0;
             border-radius: 25px;
-            padding: 40px;
+            padding: 35px;
         }
 
         .history-title {
             color: #1e3a8a;
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 26px;
             margin-bottom: 15px;
         }
 
         .history-desc {
             color: #64748b;
             line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 800px;
+            margin-bottom: 30px;
         }
 
-        /* Internal Inception Card */
-        .card {
+        /* Timeline Card */
+        .info-card {
             background: white;
             border: 1px solid #f1f5f9;
-            border-radius: 25px;
-            padding: 30px;
-            width: 320px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            text-align: right; /* Aligns text to the right as seen in image */
+            border-radius: 20px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        .card-year {
-            font-weight: 700;
-            color: #334155;
-            margin-bottom: 10px;
+        .card-year { font-weight: bold; color: #64748b; }
+        .card-title { font-size: 22px; font-weight: 800; color: #1e3a8a; margin: 5px 0; }
+        .card-text { color: #94a3b8; font-size: 14px; line-height: 1.5; }
+
+        /* Footer */
+        footer {
+            margin-left: 260px;
+            background: #fff;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            font-size: 13px;
         }
 
-        .card-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1e3a8a;
-            margin-bottom: 10px;
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content, footer { margin-left: 0; }
         }
-
-        .card-text {
-            color: #94a3b8;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        a{
-            text-decoration: none;
-        }
-        b :hover{
-           padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            
-           
-            font-size: 16px;  
-
-         background-color: #82a0f1;
-            color: #eef2f6;
-            }   
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="top-bar"></div>
-        
-        <div class="content-padding">
-            <h1 class="title">
-                <span class="blue-text">About</span> 
-                <span class="yellow-text">Mutovu TSS</span>
-            </h1>
+    <header class="topbar">
+        <div class="top-title">Welcome To Mutovu Technical Secondary School</div>
+    </header>
 
-            <div class="tab-bar">
-                
-                <a href="overview.html"><b><div class="tab">Overview</div></b></a>
-                <a href="history.html"><div class="tab active">History</div></b></a>
-                <a href="mission &v.html"><b><div class="tab">Mission & Vision</div></b></a>
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="user">
+                <img src="koi.png" alt="Profile">
+                <h3>Student User</h3>
+                <p style="font-size: 12px; opacity: 0.8;">student</p>
             </div>
 
-            <div class="history-box">
-                <h2 class="history-title">School History</h2>
-                <p class="history-desc">
-                    Since our establishment, Mutovu TSS has been committed to providing quality technical education in Nyaruguru District. Our journey reflects our dedication to innovation and excellence in education.
-                </p>
+            <h2>MAIN MENU</h2>
+            <ul>
+                <li><a href="#">🏠 HOME</a></li>
+                <li><a href="about.html" style="background: #014630; border-bottom: 4px solid #f59e0b;">ℹ️ ABOUT</a></li>
+                <li><a href="#">📞 CONTACT</a></li>
+                <li><a href="#">📝 REGISTRATION</a></li>
+                <li><a href="#">📚 COURSES</a></li>
+                <li><a href="#">📜 SCHEDULE</a></li>
+                <li><a href="#">🎥 VIDEO</a></li>
+                <li><a href="#">📓 CLASS NOTE</a></li>
+            </ul>
+            <button id="lo">↤ Logout</button>
+        </nav>
 
-                <div class="card">
-                    <div class="card-year">2008</div>
-                    <div class="card-title">Inception</div>
-                    <div class="card-text">
-                        The idea for Mutovu Technical Secondary School was conceived by the Ministry of Education in collaboration with Nyaruguru District to address the growing need for...
+        <main class="main-content">
+            <div class="container">
+                <div class="content-padding">
+                    <h1 class="page-title">
+                        <span class="blue-text">About</span> 
+                        <span class="yellow-text">Mutovu TSS</span>
+                    </h1>
+
+                    <div class="tab-bar">
+                        <a href="overview.html" class="tab">Overview</a>
+                        <a href="history.html" class="tab active">History</a>
+                        <a href="mission.html" class="tab">Mission & Vision</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</body>
-</html>
+                    <div class="history-box">
+                        <h2 class="history-title">School History</h2>
+                        <p class="history-desc">
+                            Since our establishment, Mutovu TSS has been committed to providing quality technical education in Nyaruguru District. Our journey reflects our dedication to innovation and excellence in education.
+                        </p>
+
+                        <div class="info-card">
+                            <div class="card-year">2008</div>
+                            <div class="card-title">Inception</div>
+                            <p class="card-
