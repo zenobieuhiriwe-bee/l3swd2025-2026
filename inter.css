@@ -18,6 +18,7 @@ padding:15px 20px;
 background:linear-gradient(90deg,#2e3192,#662d91,#008037);
 color:white;
 font-size:18px;
+    heigth:130px;
 }
 
 .title{
@@ -201,6 +202,7 @@ color:blue;
     border-color: white;
     border-width: 1px;
 }
+
 
 
 
