@@ -36,7 +36,7 @@ color: black;
 }
 ul li a:hover{
 background-color: rgb(77, 114, 182);
-color: blue;
+color: wight;
 box-shadow: inset;
 }
 #l6{
@@ -50,3 +50,4 @@ box-shadow: inset;
     font-size: 50px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
