@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+             background:linear-gradient(rgb(31, 54, 93),rgb(57, 21, 77),rgb(26, 94, 57));
+            border-radius: 10px;
+            border-style: solid;
+            width: 400px;
+            margin-top: 50px;
+            padding: 40px;
+            border-style: none;
+            height: auto; 
+            font-size: large;
+            box-shadow:black;
+            height: 700px;
+        }
+
+        
+        form, label, b {
+            background-color: transparent;
+        }
+
+        h1 { 
+            animation: bounce 2s infinite;
+            background-color: transparent;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: rgb(99, 28, 86); /* Changed for better readability */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 100%; /* Makes it responsive to form width */
+            height: 40px;
+            font-size: 10px;
+            padding-left: 10px;
+        }
+
+        .Signin-btn {
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+             background:linear-gradient( rgb(150, 54, 185),rgb(39, 144, 156),rgb(174, 220, 47));
+        }
+
+        .Signin-btn:hover {
+             background-color: rgb(50, 111, 143);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        #l3{
+            width: 10px;
+
+        }
+        #l5{
+            border-style: dotted;
+            width: 1000px;
+            margin-left: 30px;
+            padding: 40px;
+
+        }
+        .demo-box{
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+             background:linear-gradient( rgb(150, 54, 185),rgb(39, 144, 156),rgb(174, 220, 47));
+        }
+        .demo-title{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .demo-flex{
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<center>
+    <div id="l5">
+
+    <form>
+        <h1>Mutovu TSS Portal</h1>
+        <h5>Secure Login Access Required</h5>
+        <label>Username</label><br>
+        <input type="text" placeholder="Enter your username">
+        
+        <label>Password</label><br>
+        <input type="password" placeholder="Enter your password" style="color:white;"><br><br>
+        <div class="demo-box">
+            <p class="demo-title"><b>Demo Credentials:</b></p>
+        <div class="demo-flex"></div>
+       <div>Username: collins<br>
+    Password: 11111</div>
+    <div>Username: USER<br>
+        Password: 123
+    </div>
+     </div>
+
+        <input type="submit" value="Signin" class="Signin-btn">
+        <h6>secure access to mutovu technical secondary school portal<br>Attempts:0/5 before lockout</h6>
+    </form>
+    </div> 
+</center>
+
+</body>
+</html>
