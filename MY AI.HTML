@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mutovu TSS AI Assistant</title>
+
+<style>
+  h2{
+    color: blue;
+  }
+  input{
+    align-items: center;
+    margin-top: 300px;
+    width: 400px;
+    height: 40px;
+    border-radius: 45px;
+    border-style: dotted;
+    border-bottom-left-radius: 1px;
+
+
+  }
+  button{
+    width: 50px;
+    height: 40px;
+    border-radius: 45px;
+  }
+  button:hover{
+    background-color: bisque;
+     width:70px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+
+</style>
+
+</head>
+<body>
+  <a href="form.html">➡️login to our AI</a>
+
+<p class="chatbox">
+<h2>Mutovu TSS AI </h2>
+<h3>this you can use it for asking any question you meet for Mutovu tss</h3>
+
+<h3 id="messages"></h3><br><br>
+
+<input type="text" id="question" placeholder="🖊️ Ask about Mutovu TSS">
+<button onclick="ask()">Ask</button>
+</p>
+
+<script>
+
+const AIKnowledgeBase = {
+  schools: [
+    {
+      name: "Mutovu Tss",
+      shortName: "Mutovu TSS",
+      type: "Technical Secondary School",
+      location: {
+        district: "nyaruguru",
+        province: "Southern Province",
+        country: "Rwanda",
+        Status: "Public",
+        Boarding: "Boarding school (facilities available for students to live on campus)",
+        Code: "230603",
+        SoftwareDevelopment: "This program focuses on coding, database management, and application development.",
+        MultimediaProduction: "Covers areas such as graphic design, video editing, and digital content creation.",
+
+        BuildingConstruction: "Focuses on masonry, construction technology, and structural planning.",
+      },
+      focus: "Technical ",
+      departments: [
+        "Construction",
+        "Electrical Technology",
+        "Computer Technology"
+      ],
+      facilities: [
+        "Tell me if you want others",
+       
+      ],
+      trades: [
+ "SoftwareDevelopment: This program focuses on coding, database management, and application development.",
+        "MultimediaProduction: covers areas such as graphic design, video editing, and digital content creation.",
+
+        "BuildingConstruction: Focuses on masonry, construction technology, and structural planning.",
+      
+        
+       
+      ],
+      phone:[
+        "Contact Information",
+          "While official digital presence can be limited, the following contact details have been associated with the school administration in official NESA/RTB registries:",
+
+           "Phone: +250 788 852 629",
+
+      ],
+      components: [
+        
+"Mutovu Technical Secondary School (Mutovu TSS) is a public vocational and technical institution located in the Nyaruguru District of the Southern Province. It is one of the key TVET schools in the region, specifically situated in the Muganza Sector."
+    ],
+      description:
+        "Mutovu Technical Secondary School trains students with practical technical and vocational skills."
+    }
+  ]
+};
+
+
+function askAI(question){
+
+const q = question.toLowerCase();
+
+if(q.includes("mutovu") || q.includes("school")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " is a " + school.type +
+". It is located in " + school.location.district +
+", " + school.location.province +
+", " + school.location.country +school.facilities.join(", ") + ".";
+}
+if(q.includes("information") || q.includes("where")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " is a " + school.type +
+". It is located in " + school.location.district + school.components
++school.facilities.join(", ") + ".";
+}
+
+if(q.includes("Code") || q.includes("boarding")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " 's code is " + school.location.Boarding +
+school.location.Code
++school.facilities.join(", ") + ".";
+}
+if(q.includes("phone") || q.includes("number")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " 's Trades are: " + school.phone +
+
+ school.facilities.join(", ") + ".";
+}
+
+
+
+if(q.includes("sectors") || q.includes("sectors")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " 's Trades are: " + school.trades +
+
+ school.facilities.join(", ") + ".";
+}
+
+if(q.includes("Mutovu") || q.includes("school")){
+
+const school = AIKnowledgeBase.schools[0];
+
+return school.name + " is a " + school.type +
+". It is located in " + school.location.district +
+", " + school.location.province +
+", " + school.location.country +
+". It focuses on " + school.focus +
+". Programs include " + school.departments.join(", ") +
+". Facilities include " + school.facilities.join(", ") + ".";
+}
+
+
+return "Sorry, I only know information about Mutovu TSS right now.";
+
+}
+function ask(){
+
+const input = document.getElementById("question");
+const messages = document.getElementById("messages");
+
+const question = input.value;
+
+messages.innerHTML += "<p class='user'><b>You:</b> " + question + "</p>";
+
+const answer = askAI(question);
+
+messages.innerHTML += "<p class='ai'><b>AI:</b> " + answer + "</p>";
+
+input.value = "";
+
+messages.scrollTop = messages.scrollHeight;
+
+}
+
+</script>
+</body>
+</html>
