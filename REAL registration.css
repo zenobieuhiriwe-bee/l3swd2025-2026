@@ -28,6 +28,7 @@ color:white;
 font-size:18px;
     heigth:130px;
     margin-top:-9px;
+     margin-left:-9px;
 }
 
 .title{
@@ -78,11 +79,11 @@ border-bottom:3px solid orange;
 display:inline-block;
 }
 
-.sidebar ul{
+.sidebar #ul{
 list-style:none;
 }
 
-.sidebar ul li{
+.sidebar #ul .li{
 padding:12px;
 margin:8px 0;
 cursor:pointer;
@@ -90,7 +91,7 @@ border-radius:6px;
 }
 
 
-.sidebar ul li a{
+.sidebar #ul .li a{
 margin-right:10px;
 text-decoration: none;
 color: white;
@@ -139,6 +140,7 @@ box-shadow: inset;
     font-size: 50px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
 
 
 
