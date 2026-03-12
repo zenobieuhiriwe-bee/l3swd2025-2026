@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Mutovu TSS</title>
     <style>
-        /* 1. Global Reset & Layout */
+
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +20,7 @@
             flex-direction: column;
         }
 
-        /* 2. Topbar - Stays at the very top */
+       
         .topbar {
             
 width: 100%;
@@ -51,14 +51,14 @@ width: 100%;
             50% { transform: translateY(-3px); }
         }
 
-        /* 3. Main Container Wrapper */
+       
         .wrapper {
             display: flex;
             flex: 1;
-            margin-top: 60px; /* Space for fixed topbar */
+            margin-top: 60px;
         }
 
-        /* 4. Sidebar - Stays on the left */
+       
         .sidebar {
             width: 260px;
             background: #016432;
@@ -129,9 +129,9 @@ width: 100%;
 
         #lo:hover { background: #be123c; }
 
-        /* 5. Main Content Area - Pushed right by sidebar */
+       
         .main-content {
-            margin-left: 260px; /* Space for the sidebar */
+            margin-left: 260px; 
             padding: 40px;
             flex: 1;
             display: flex;
@@ -159,7 +159,7 @@ width: 100%;
         .text-blue { color: #1e3a8a; }
         .text-orange { color: #f59e0b; }
 
-        /* Tab Bar Styling */
+       
         .tab-bar {
             background: #f1f5f9;
             padding: 8px;
@@ -193,7 +193,7 @@ width: 100%;
             color: #475569;
         }
 
-        /* 6. Footer - Fixed at bottom */
+       
         footer {
             margin-left: 260px;
             background: white;
@@ -204,7 +204,7 @@ width: 100%;
             color: #64748b;
         }
 
-        /* Mobile View Fix */
+       
         @media (max-width: 768px) {
             .sidebar { width: 0; display: none; }
             .main-content, footer { margin-left: 0; }
@@ -294,6 +294,7 @@ width: 100%;
 
 </body>
 </html>
+
 
 
 
